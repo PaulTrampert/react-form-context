@@ -1,0 +1,60 @@
+{
+  "name": "react-validator",
+  "version": "1.0.0",
+  "description": "Validation framework for React",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack --watch",
+    "build": "webpack",
+    "test": "karma start",
+    "test-ci": "karma start --single-run --reporters junit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/PaulTrampert/react-validator.git"
+  },
+  "keywords": [
+    "validation",
+    "react"
+  ],
+  "author": "Paul Trampert",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PaulTrampert/react-validator/issues"
+  },
+  "homepage": "https://github.com/PaulTrampert/react-validator#readme",
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "prop-types": "^15.6.0",
+    "react": "^16.1.0",
+    "react-dom": "^16.1.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.2",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.1.1",
+    "enzyme-adapter-react-16": "^1.0.4",
+    "eslint": "^4.10.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-react": "^7.4.0",
+    "inject-loader": "^3.0.1",
+    "jasmine-core": "^2.8.0",
+    "jasmine-enzyme": "^4.0.1",
+    "karma": "^1.7.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-junit-reporter": "^1.2.0",
+    "karma-mocha-reporter": "^2.2.5",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^2.0.5",
+    "path": "^0.12.7",
+    "react-test-renderer": "^16.1.0",
+    "webpack": "^3.8.1"
+  }
+}
