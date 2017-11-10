@@ -27,7 +27,7 @@ class Form extends React.PureComponent {
         await onSubmit(event);
       }
       else {
-        await onInvalidSubmit(this.form);
+        await onInvalidSubmit(event);
       }
     } catch (e) {
       onSubmitError(e);
