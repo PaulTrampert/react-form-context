@@ -1,11 +1,14 @@
 import 'babel-polyfill';
+import Form from './Form';
 import FormContext from './FormContext';
 
 let index = {
+  Form,
   FormContext
 };
 
 export {
-  index as default,
-  FormContext
+  Form,
+  FormContext,
+  index as default
 };
