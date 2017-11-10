@@ -9,7 +9,7 @@ module.exports = {
   devtool: 'sourcemap',
   stats: 'errors-only',
   entry: {
-    'react-validator': path.resolve(SRC, 'index.js')
+    'react-form-context': path.resolve(SRC, 'index.js')
   },
   output: {
     path: DIST,
