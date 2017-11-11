@@ -1,4 +1,5 @@
 import FormInjector from 'inject-loader!./Form';
+import jasmineAsync from './testUtil/jasmineAsync';
 import {shallow} from 'enzyme';
 import React from 'react';
 
@@ -62,5 +63,26 @@ describe('Form', () => {
       subject.instance().handleSubmit(event);
       expect(event.preventDefault).toHaveBeenCalled();
     });
+
+    it('calls onSubmit if form.isValid() returns true', jasmineAsync(async () => {
+      subject.instance().form.isValid = () => Promise.resolve(true);
+      await subject.instance().handleSubmit(event);
+      expect(onSubmit).toHaveBeenCalledWith(event);
+      expect(onInvalidSubmit).not.toHaveBeenCalled();
+    }));
+
+    it('calls onInvalidSubmit if form.isValid() returns false',jasmineAsync(async () => {
+      subject.instance().form.isValid = () => false;
+      await subject.instance().handleSubmit(event);
+      expect(onSubmit).not.toHaveBeenCalled();
+      expect(onInvalidSubmit).toHaveBeenCalledWith(event);
+    }));
+
+    it('calls onSubmitError when an error is thrown', jasmineAsync(async () => {
+      subject.instance().form.isValid = () => false;
+      onInvalidSubmit.and.returnValue(Promise.reject('wtf'));
+      await subject.instance().handleSubmit(event);
+      expect(onSubmitError).toHaveBeenCalledWith('wtf');
+    }));
   });
 });
