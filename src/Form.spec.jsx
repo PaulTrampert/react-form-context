@@ -52,6 +52,15 @@ describe('Form', () => {
   });
 
   describe('handleSubmit', () => {
-    
+    let event;
+
+    beforeEach(() => {
+      event = jasmine.createSpyObj('event', ['preventDefault']);
+    });
+
+    it('preventsDefault', () => {
+      subject.instance().handleSubmit(event);
+      expect(event.preventDefault).toHaveBeenCalled();
+    });
   });
 });
