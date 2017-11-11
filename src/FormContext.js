@@ -18,8 +18,10 @@ class FormContext {
   }
 
   set isSubmitting(value) {
-    this._isSubmitting = value;
-    this.eventBroker.publish(this);
+    if (this._isSubmitting !== value) {
+      this._isSubmitting = value;
+      this.eventBroker.publish(this);
+    }
   }
 
   get hasSubmitted() {
@@ -27,8 +29,10 @@ class FormContext {
   }
 
   set hasSubmitted(value) {
-    this._hasSubmitted = value;
-    this.eventBroker.publish(this);
+    if (this._hasSubmitted !== value) {
+      this._hasSubmitted = value;
+      this.eventBroker.publish(this);
+    }
   }
 
   registerField = (field) => {
