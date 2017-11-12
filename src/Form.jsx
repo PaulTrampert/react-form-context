@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import FormContext from './FormContext';
 import getPassthroughProps from './util/getPassthroughProps';
 
-class Form extends React.PureComponent {
+class Form extends React.Component {
   constructor(props) {
     super(props);
 
