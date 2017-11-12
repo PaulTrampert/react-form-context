@@ -36,7 +36,7 @@ class FormContext {
   }
 
   registerField = (field) => {
-    this._fields.push(field);
+    this._fields = this._fields.concat(field);
   }
 
   isValid = async () => {
@@ -44,6 +44,10 @@ class FormContext {
       await delay(100);
     }
     return this.fields.every(f => f.isValid);
+  }
+
+  subscribe = (handler) => {
+    return this.eventBroker.subscribe(handler);
   }
 }
 
