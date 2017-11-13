@@ -39,6 +39,10 @@ class FormContext {
     this._fields = this._fields.concat(field);
   }
 
+  unregisterField = (field) => {
+    this._fields = this._fields.filter(f => f !== field);
+  }
+
   isValid = async () => {
     while (this.fields.some(f => f.isValidating)) {
       await delay(100);
