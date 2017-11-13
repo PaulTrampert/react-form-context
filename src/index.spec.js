@@ -2,7 +2,9 @@ import * as index from './index';
 import idx from './index';
 import {
   Form,
-  FormContext
+  FormContext,
+  formContextAware,
+  withValidation
 } from './index';
 
 describe('index', () => {
@@ -16,5 +18,17 @@ describe('index', () => {
     expect(FormContext).toEqual(jasmine.any(Function));
     expect(index.FormContext).toEqual(jasmine.any(Function));
     expect(idx.FormContext).toEqual(jasmine.any(Function));
+  });
+
+  it('exports formContextAware', () => {
+    expect(formContextAware).toEqual(jasmine.any(Function));
+    expect(index.formContextAware).toEqual(jasmine.any(Function));
+    expect(idx.formContextAware).toEqual(jasmine.any(Function));
+  });
+
+  it('exports withValidation', () => {
+    expect(withValidation).toEqual(jasmine.any(Function));
+    expect(index.withValidation).toEqual(jasmine.any(Function));
+    expect(idx.withValidation).toEqual(jasmine.any(Function));
   });
 });
