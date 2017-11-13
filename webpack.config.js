@@ -14,7 +14,7 @@ module.exports = {
   output: {
     path: DIST,
     filename: '[name].js',
-    library: 'reactValidator',
+    library: 'reactFormContext',
     libraryTarget: 'umd'
   },
   externals: Object.keys(dependencies),
