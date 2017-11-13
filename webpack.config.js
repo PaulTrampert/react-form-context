@@ -1,6 +1,9 @@
+require('babel-polyfill');
 const webpack = require('webpack');
 const path = require('path');
 const {dependencies} = require('./package.json');
+const fs = require('fs');
+const license = fs.readFileSync(path.resolve(__dirname, 'LICENSE'), {encoding: 'utf8'});
 
 const SRC = path.resolve(__dirname, 'src');
 const DIST = path.resolve(__dirname, 'dist');
@@ -40,5 +43,10 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.BannerPlugin({
+      banner: license
+    })
+  ]
 };
