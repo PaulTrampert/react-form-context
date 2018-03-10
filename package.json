@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/PaulTrampert/react-validator.git"
+    "url": "git+ssh://git@github.com/PaulTrampert/react-form-context.git"
   },
   "keywords": [
     "validation",
@@ -20,9 +20,9 @@
   "author": "Paul Trampert",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/PaulTrampert/react-validator/issues"
+    "url": "https://github.com/PaulTrampert/react-form-context/issues"
   },
-  "homepage": "https://github.com/PaulTrampert/react-validator#readme",
+  "homepage": "https://github.com/PaulTrampert/react-form-context#readme",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "prop-types": "^15.6.0",
