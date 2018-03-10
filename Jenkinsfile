@@ -1,3 +1,5 @@
+def releaseInfo
+
 pipeline {
   agent any;
 
@@ -6,6 +8,26 @@ pipeline {
   }
 
   stages {
+		stage('Build Release Info') {
+			when {
+				expression {env.BRANCH_NAME == 'master'}
+			}
+			
+			steps {
+				script{
+					releaseInfo = generateGithubReleaseInfo(
+						'PaulTrampert',
+						'flatitude',
+						'v',
+						'github_token'
+					)
+
+					echo releaseInfo.nextVersion().toString()
+					echo releaseInfo.changelogToMarkdown()
+				}
+			}
+		}
+
     stage('Restore') {
       steps {
         sh 'npm install'
@@ -24,6 +46,28 @@ pipeline {
       }
     }
     
+
+		stage('Publish') {
+			when {
+				expression {env.BRANCH_NAME == 'master'}
+			}
+
+			steps {
+				script {
+					def packageJson = readJSON file: 'package.json'
+					packageJson.version = releaseInfo.nextVersion().toString()
+					writeJSON file: 'package.json', json: packageJson, pretty: 2
+				}
+				sh 'npm publish'
+				publishGithubRelease(
+					'PaulTrampert',
+					'flatitude',
+					releaseInfo,
+					'v',
+					'github_token'
+				)
+			}
+		}
   }
   
   post {
