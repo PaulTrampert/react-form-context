@@ -17,7 +17,7 @@ pipeline {
 				script{
 					releaseInfo = generateGithubReleaseInfo(
 						'PaulTrampert',
-						'flatitude',
+						'react-form-context',
 						'v',
 						'github_token'
 					)
@@ -61,7 +61,7 @@ pipeline {
 				sh 'npm publish'
 				publishGithubRelease(
 					'PaulTrampert',
-					'flatitude',
+					'react-form-context',
 					releaseInfo,
 					'v',
 					'github_token'
