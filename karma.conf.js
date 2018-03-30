@@ -2,6 +2,8 @@ let webpack = require('./webpack.config.js');
 delete webpack.externals;
 webpack.devtool = 'inline-sourcemap';
 
+const chromeLauncher = process.platform === 'win32' ? 'ChromeHeadless' : 'ChromiumHeadless';
+
 module.exports = function(config) {
   config.set({
 
@@ -43,7 +45,7 @@ module.exports = function(config) {
     },
     junitReporter: {
       outputDir: 'testReports',
-      useBrowserName: false
+      useBrowserName: true
     },
 
     // web server port
@@ -65,7 +67,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: [ chromeLauncher, 'FirefoxHeadless' ],
 
 
     // Continuous Integration mode
