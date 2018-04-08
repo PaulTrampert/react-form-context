@@ -88,8 +88,8 @@ describe("withValidation", () => {
 
       it('calls each validator', jasmineAsync(async () => {
         await subject.instance().validate();
-        expect(validator1).toHaveBeenCalledWith('herp');
-        expect(validator2).toHaveBeenCalledWith('herp');
+        expect(validator1).toHaveBeenCalledWith('herp', 'derp');
+        expect(validator2).toHaveBeenCalledWith('herp', 'derp');
       }));
 
       it('triggers the onValidatedEvent', jasmineAsync(async () => {
