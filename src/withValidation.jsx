@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FormContext from './FormContext';
 import getPassthroughProps from './util/getPassthroughProps';
+import Debouncer from './util/Debouncer.js';
 
 const withValidation = (WrappedComponent) => {
 
   class WithValidation extends React.Component {
     constructor(props, context) {
       super(props);
-
+      this.debouncer = new Debouncer();
       this.state = {
         validationErrors: [],
         isValidating: false
@@ -34,7 +35,7 @@ const withValidation = (WrappedComponent) => {
 
     componentDidUpdate(prevProps) {
       if (this.props.value !== prevProps.value) {
-        this.validate();
+        this.debouncer.debounce(this.validate(), {swallowDebounce: true});
       }
     }
 
