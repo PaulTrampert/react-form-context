@@ -60,7 +60,7 @@ const withValidation = (WrappedComponent) => {
         onValidated
       } = this.props;
       this.setState({isValidating: true});
-      let promises = validators.map(v => v(value));
+      let promises = validators.map(v => v(value, name));
       let validationErrors = await Promise.all(promises);
       validationErrors = validationErrors.filter(e => !!e);
       onValidated({
