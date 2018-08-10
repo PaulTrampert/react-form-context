@@ -27,14 +27,9 @@ const withValidation = (WrappedComponent) => {
       }
     }
 
-    componentWillReceiveProps = (nextProps) => {
-      if (this.props.value !== nextProps.value) {
-        this.setState({isValidating: true});
-      }
-    }
-
     componentDidUpdate = (prevProps) => {
       if (this.props.value !== prevProps.value) {
+        this.setState({isValidating: true});
         this.debouncer.debounce(this.validate, {swallowDebounce: true});
       }
     }
