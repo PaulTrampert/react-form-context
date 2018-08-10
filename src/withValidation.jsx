@@ -20,26 +20,26 @@ const withValidation = (WrappedComponent) => {
       }
     }
 
-    componentDidMount() {
+    componentDidMount = () => {
       this.validate();
       if (this.form) {
         this.form.registerField(this);
       }
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps = (nextProps) => {
       if (this.props.value !== nextProps.value) {
         this.setState({isValidating: true});
       }
     }
 
-    componentDidUpdate(prevProps) {
+    componentDidUpdate = (prevProps) => {
       if (this.props.value !== prevProps.value) {
-        this.debouncer.debounce(this.validate(), {swallowDebounce: true});
+        this.debouncer.debounce(this.validate, {swallowDebounce: true});
       }
     }
 
-    componentWillUnmount() {
+    componentWillUnmount = () => {
       if (this.form) {
         this.form.unregisterField(this);
       }
