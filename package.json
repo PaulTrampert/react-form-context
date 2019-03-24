@@ -2,27 +2,27 @@
   "name": "react-form-context",
   "version": "1.0.0",
   "description": "Validation framework for React",
-  "main": "dist/react-form-context.js",
-  "scripts": {
-    "start": "webpack --watch",
-    "build": "webpack",
-    "test": "karma start",
-    "test-ci": "karma start --single-run --reporters junit"
+  "keywords": [
+    "react",
+    "validation"
+  ],
+  "homepage": "https://github.com/PaulTrampert/react-form-context#readme",
+  "bugs": {
+    "url": "https://github.com/PaulTrampert/react-form-context/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/PaulTrampert/react-form-context.git"
   },
-  "keywords": [
-    "validation",
-    "react"
-  ],
-  "author": "Paul Trampert",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/PaulTrampert/react-form-context/issues"
+  "author": "Paul Trampert",
+  "main": "dist/react-form-context.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack --watch",
+    "test": "karma start",
+    "test-ci": "karma start --single-run --reporters junit"
   },
-  "homepage": "https://github.com/PaulTrampert/react-form-context#readme",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "prop-types": "^15.6.0",
@@ -30,14 +30,14 @@
     "react-dom": "^16.1.0"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.2",
-    "babel-loader": "^7.1.2",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
+    "@babel/core": "^7.4.0",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.0",
+    "@babel/plugin-transform-destructuring": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.5",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
     "eslint": "^5.15.3",

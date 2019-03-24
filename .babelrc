@@ -1,11 +1,11 @@
 {
   "presets": [
-    "env",
-    "react"
+    "@babel/preset-env",
+    "@babel/preset-react"
   ],
   "plugins": [
-    "transform-es2015-destructuring",
-    "transform-object-rest-spread",
-    "transform-class-properties"
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-transform-destructuring",
+    "@babel/plugin-proposal-object-rest-spread",
   ]
 }
