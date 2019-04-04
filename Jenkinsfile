@@ -12,14 +12,14 @@ pipeline {
 			when {
 				expression {env.BRANCH_NAME == 'master'}
 			}
-			
+
 			steps {
 				script{
 					releaseInfo = generateGithubReleaseInfo(
 						'PaulTrampert',
 						'react-form-context',
 						'v',
-						'github_token'
+						'Github User/Pass'
 					)
 
 					echo releaseInfo.nextVersion().toString()
@@ -45,7 +45,7 @@ pipeline {
         sh 'npm run test-ci'
       }
     }
-    
+
 
 		stage('Publish') {
 			when {
@@ -64,12 +64,12 @@ pipeline {
 					'react-form-context',
 					releaseInfo,
 					'v',
-					'github_token'
+					'Github User/Pass'
 				)
 			}
 		}
   }
-  
+
   post {
     failure {
       mail to: 'paul.trampert@gmail.com', subject: "Build status of ${env.JOB_NAME} changed to ${currentBuild.result}", body: "Build log may be found at ${env.BUILD_URL}"
@@ -78,32 +78,32 @@ pipeline {
       archiveArtifacts 'dist/**/*'
       step(
 				[
-					$class: 'XUnitBuilder', 
-					testTimeMargin: '60000', 
-					thresholdMode: 1, 
+					$class: 'XUnitBuilder',
+					testTimeMargin: '60000',
+					thresholdMode: 1,
 					thresholds: [
 						[
-							$class: 'FailedThreshold', 
-							failureNewThreshold: '', 
-							failureThreshold: '', 
-							unstableNewThreshold: '', 
+							$class: 'FailedThreshold',
+							failureNewThreshold: '',
+							failureThreshold: '',
+							unstableNewThreshold: '',
 							unstableThreshold: '0'
-						], 
+						],
 						[
-							$class: 'SkippedThreshold', 
-							failureNewThreshold: '', 
-							failureThreshold: '', 
-							unstableNewThreshold: '', 
+							$class: 'SkippedThreshold',
+							failureNewThreshold: '',
+							failureThreshold: '',
+							unstableNewThreshold: '',
 							unstableThreshold: ''
 						]
-					], 
+					],
 					tools: [
 						[
-							$class: 'JUnitType', 
-							deleteOutputFiles: true, 
-							failIfNotNew: true, 
-							pattern: 'testReports/**/*', 
-							skipNoTestFiles: false, 
+							$class: 'JUnitType',
+							deleteOutputFiles: true,
+							failIfNotNew: true,
+							pattern: 'testReports/**/*',
+							skipNoTestFiles: false,
 							stopProcessingIfError: true
 						]
 					]
