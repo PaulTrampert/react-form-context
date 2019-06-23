@@ -1,8 +1,8 @@
 let webpack = require('./webpack.config.js');
+const isDocker = require('is-docker');
 delete webpack.externals;
 webpack.devtool = 'inline-sourcemap';
 
-const chromeLauncher = 'ChromeHeadless';
 
 module.exports = function(config) {
   config.set({
@@ -67,8 +67,14 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: [ chromeLauncher, 'FirefoxHeadless' ],
+    browsers: [ 'ChromeCustom', 'FirefoxHeadless' ],
 
+    customLaunchers: {
+      ChromeCustom: {
+        base: 'ChromeHeadless',
+        flags: isDocker ? ['--no-sandbox'] : []
+      }
+    },
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
