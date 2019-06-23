@@ -1,11 +1,17 @@
 def releaseInfo
 
 pipeline {
-  agent any;
+  agent {
+		docker "paultrampert/node-chrome-firefox"
+	};
 
   options {
     buildDiscarder(logRotator(numToKeepStr:'5'))
   }
+
+	environment {
+		HOME = "$WORKSPACE"
+	}
 
   stages {
 		stage('Build Release Info') {
