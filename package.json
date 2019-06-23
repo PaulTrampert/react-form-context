@@ -44,6 +44,7 @@
     "eslint-loader": "^2.1.2",
     "eslint-plugin-react": "^7.12.4",
     "inject-loader": "^4.0.1",
+    "is-docker": "^2.0.0",
     "jasmine-core": "^3.3.0",
     "jasmine-enzyme": "^7.0.2",
     "karma": "^4.0.1",
