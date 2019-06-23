@@ -2,7 +2,7 @@ let webpack = require('./webpack.config.js');
 delete webpack.externals;
 webpack.devtool = 'inline-sourcemap';
 
-const chromeLauncher = process.platform === 'win32' ? 'ChromeHeadless' : 'ChromiumHeadless';
+const chromeLauncher = 'ChromeHeadless';
 
 module.exports = function(config) {
   config.set({
