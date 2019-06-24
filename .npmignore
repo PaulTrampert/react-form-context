@@ -1,3 +1,4 @@
 testReports/
 .vscode/
 Jenkinsfile
+.npmrc
