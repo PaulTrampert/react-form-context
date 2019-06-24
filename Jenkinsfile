@@ -62,7 +62,7 @@ pipeline {
 					writeJSON file: 'package.json', json: packageJson, pretty: 2
 				}
 				withCredentials([string(credentialsId: 'npmrc', variable: 'NPMRC')]) {
-					writeFile file: "$HOME/.npmrc", text: NPMRC
+					writeFile file: ".npmrc", text: NPMRC
 					sh 'npm publish'
 					publishGithubRelease(
 						'PaulTrampert',
