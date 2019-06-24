@@ -10,10 +10,6 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr:'5'))
   }
 
-	environment {
-		HOME = "$WORKSPACE"
-	}
-
   stages {
 		stage('Build Release Info') {
 			when {
@@ -66,7 +62,7 @@ pipeline {
 					writeJSON file: 'package.json', json: packageJson, pretty: 2
 				}
 				withCredentials([string(credentialsId: 'npmrc', variable: 'NPMRC')]) {
-					writeFile file: '.npmrc', text: NPMRC
+					writeFile file: "$HOME/.npmrc", text: NPMRC
 					sh 'npm publish'
 					publishGithubRelease(
 						'PaulTrampert',
