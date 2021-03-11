@@ -82,39 +82,7 @@ pipeline {
     }
     always {
       archiveArtifacts 'dist/**/*'
-      step(
-				[
-					$class: 'XUnitBuilder',
-					testTimeMargin: '60000',
-					thresholdMode: 1,
-					thresholds: [
-						[
-							$class: 'FailedThreshold',
-							failureNewThreshold: '',
-							failureThreshold: '',
-							unstableNewThreshold: '',
-							unstableThreshold: '0'
-						],
-						[
-							$class: 'SkippedThreshold',
-							failureNewThreshold: '',
-							failureThreshold: '',
-							unstableNewThreshold: '',
-							unstableThreshold: ''
-						]
-					],
-					tools: [
-						[
-							$class: 'JUnitType',
-							deleteOutputFiles: true,
-							failIfNotNew: true,
-							pattern: 'testReports/**/*',
-							skipNoTestFiles: false,
-							stopProcessingIfError: true
-						]
-					]
-				]
-			)
+      xunit([JUnit(excludesPattern: '', pattern: 'testReports/**/*', stopProcessingIfError: true)])
       deleteDir()
     }
   }
